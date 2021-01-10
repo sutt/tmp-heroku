@@ -3,6 +3,7 @@ import Todo from './components/Todo'
 import Form from './components/Form'
 import FilterButton from './components/FilterButton'
 import {nanoid} from "nanoid"
+import {Route, Link} from "react-router-dom"
 
 // var globalRet = null;
 function App(props) {
@@ -34,26 +35,34 @@ function App(props) {
       id={task.id}
       checkFunc={toggleTaskComplete}
       delFunc={delTask}
+      editFunc={editTask}
       criteria={viewCriteria}
       >
     </Todo>)
     )
 
-  // const amtTasks = props.tasks.length
-  // const [amtTasks, setAmtTasks] = useState(props.tasks.length)
-  // console.log(`amtTasks: ${amtTasks} intially`)
   
   function addTask(name) {
     const tmp = {id: nanoid(), name: name, completed: false}
     setTasks([...tasks, tmp])
   }
 
-  function delTask(name) {
-    let tmp = [...tasks]
-    console.log(tmp)
-    // globalRet = tmp
-    // TODO - 
-    // setTasks = 
+  function delTask(id) {
+    const tmp = tasks.filter(task => task.id !== id)
+    setTasks(tmp)
+  }
+
+  function editTask(id, newName="my edit") {
+    
+    let ids = tasks.map(task => task.id)
+    let index = ids.indexOf(id)
+    
+    let edit = tasks[index]
+    edit.name = newName
+    console.log('in editTask')
+    const newTasks = [...tasks.slice(0,index), edit, ...tasks.slice(index+1, tasks.length)]
+    setTasks(newTasks)
+    
   }
 
   function selectCriteria(txt) {
@@ -68,7 +77,7 @@ function App(props) {
 
   return (
     <div className="todoapp stack-large">
-      <h1>TodoMatic</h1>
+      <h3>TodoMatic</h3>
       
       <Form onSubmit={addTask}/>
       
@@ -94,7 +103,19 @@ function App(props) {
         <Todo name="Repeat" completed={false} id="todo-2"/> */}
 
       </ul>
+      <footer> 
+        <h3>My footer</h3>
+        <Link to="/">
+          <img src="https://en.bitcoin.it/w/images/en/2/29/BC_Logo_.png" alt="/" height="100px"/>
+          <h5>Bitcoin Prices</h5>
+        </Link>
+        {/* <Route path="/"
+          component={Todo}
+        /> */}
+      </footer>
     </div>
+    
+   
   );
 }
 

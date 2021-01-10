@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import {BrowserRouter as Router} from "react-router-dom"
 // import reportWebVitals from './reportWebVitals';
-var globalRet = null;
+
+// var globalRet = null;
+
 const  DATA = [
   {id: "todo-0", name: "Eat", completed: true},
   {id: "todo-1", name: "Sleep", completed: false},
@@ -17,10 +20,9 @@ const CRITERIA = {
 }
 
 ReactDOM.render(
-  
-    <App tasks={DATA} criteria={CRITERIA}/>
-    
-  ,
+  <Router>
+  <App tasks={DATA} criteria={CRITERIA}/>
+  </Router>,
   document.getElementById('root')
 );
 
