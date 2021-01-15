@@ -82,7 +82,7 @@ function App(props) {
       <Form onSubmit={addTask}/>
       
       <div className="filters btn-group stack-exception">
-      
+        {console.log(`logging the secret: ${process.env.REACT_APP_MY_SECRET}`)}
         {/* TODO - Make this a map */}
         <FilterButton txt="All"         criteria={viewCriteria}  passCriteria={selectCriteria} />
         <FilterButton txt="Incomplete"  criteria={viewCriteria}  passCriteria={selectCriteria} />
@@ -98,9 +98,6 @@ function App(props) {
         aria-labelledby="list-heading"
       >
         {taskList}
-        {/* <Todo name="Eat" completed={true} id="todo-0"/>
-        <Todo name="Sleep" completed={false} id="todo-1" />
-        <Todo name="Repeat" completed={false} id="todo-2"/> */}
 
       </ul>
       <footer> 
@@ -109,6 +106,7 @@ function App(props) {
           <img src="https://en.bitcoin.it/w/images/en/2/29/BC_Logo_.png" alt="/" height="100px"/>
           <h5>Bitcoin Prices</h5>
         </Link>
+        
         {/* <Route path="/"
           component={Todo}
         /> */}
