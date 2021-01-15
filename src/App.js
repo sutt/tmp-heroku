@@ -77,7 +77,7 @@ function App(props) {
 
   return (
     <div className="todoapp stack-large">
-      <h3>TodoMatic</h3>
+      <h1>TodoMatic</h1>
       
       <Form onSubmit={addTask}/>
       
