@@ -83,6 +83,7 @@ function App(props) {
       
       <div className="filters btn-group stack-exception">
         {console.log(`logging the secret: ${process.env.REACT_APP_MY_SECRET}`)}
+        {/* new comment */}
         {/* TODO - Make this a map */}
         <FilterButton txt="All"         criteria={viewCriteria}  passCriteria={selectCriteria} />
         <FilterButton txt="Incomplete"  criteria={viewCriteria}  passCriteria={selectCriteria} />
